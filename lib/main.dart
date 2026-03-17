@@ -1,33 +1,43 @@
 import 'package:flutter/material.dart';
 
 // StatelessWidget definition
-class MyCard extends StatelessWidget {
-  // Parameters can be received through the constructor
-  final String title;
-  final String subtitle;
+class CounterWidget extends StatefulWidget {
+  const CounterWidget({super.key});
 
-  // Constructor
-  const MyCard({super.key, required this.title, required this.subtitle});
+  // createState() links the widget to its State class
+  @override
+  State<CounterWidget> createState() => _CounterWidgetState();
+}
 
-  // The build() method must be overridden — returns the widget's appearance
+// 2. State class (stores mutable data)
+class _CounterWidgetState extends State<CounterWidget> {
+  // State variable — its value can change
+  int _counter = 0;
+
+  // Method to change the state
+  void _increment() {
+    setState(() {
+      // setState() tells Flutter that the state has changed
+      // and the widget needs to be rebuilt
+      _counter++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 4.0,
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 8.0),
-            Text(subtitle),
-          ],
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          '$_counter', // Display the value of _counter
+          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
         ),
-      ),
+        SizedBox(width: 16.0),
+        ElevatedButton(
+          onPressed: _increment, // Call _increment when button is pressed
+          child: Icon(Icons.add),
+        ),
+      ],
     );
   }
 }
@@ -50,7 +60,7 @@ void main() {
           SizedBox(height: 24.0),
           Container(
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 72, 135, 179),
+              color: const Color.fromARGB(255, 103, 191, 255),
             ),
             padding: EdgeInsets.all(16.0),
             margin: EdgeInsets.symmetric(horizontal: 16.0),
@@ -103,6 +113,25 @@ void main() {
                 ),
               ],
             )
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 16.0),
+            padding: EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(255, 103, 191, 255),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              spacing: 8.0,
+              children: [
+                Text(
+                  'Increase the speed of the plane:',
+                  style: TextStyle(fontSize: 16.0),
+                ),
+                SizedBox(width: 16.0),
+                CounterWidget(), // Our custom stateful widget
+              ],
+            ),
           )
         ],
       ),

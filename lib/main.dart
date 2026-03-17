@@ -36,13 +36,18 @@ void main() {
   runApp(MaterialApp(
     home: Scaffold(
       appBar: AppBar(
-        title: Text('My First App -abel'),
+        title: Text(
+          'Racing Plane Competition 2025',
+          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
+        ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 178, 167, 17),
+        backgroundColor: const Color.fromARGB(255, 255, 250, 104),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.start,
+        spacing: 24.0,
         children: [
+          SizedBox(height: 24.0),
           Container(
             decoration: BoxDecoration(
               color: const Color.fromARGB(255, 72, 135, 179),
@@ -52,25 +57,25 @@ void main() {
             width: double.infinity,
             child: Image(
               image: NetworkImage('FLB02051.JPG'),
-              width: 200,
-              height: 200,
+              width: double.infinity,
             ),
           ),
           Container(
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 185, 121, 149),
+              color: const Color.fromARGB(255, 255, 166, 205),
             ),
             padding: EdgeInsets.all(16.0),
             margin: EdgeInsets.symmetric(horizontal: 16.0),
             width: double.infinity,
             child: Text(
-              'What image is that?',
+              'Competition Day',
               style: TextStyle(fontSize: 16.0),
+              textAlign: TextAlign.center,
             ),
           ),
           Container(
             decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 208, 216, 113),
+              color: const Color.fromARGB(255, 255, 250, 104),
             ),
             padding: EdgeInsets.all(16.0),
             margin: EdgeInsets.symmetric(horizontal: 16.0),
@@ -80,20 +85,20 @@ void main() {
               children: [
                 Column(
                   children: [
-                    Icon(Icons.cake),
-                    Text('Food')
+                    Icon(Icons.airplanemode_active),
+                    Text('Plane')
                   ],
                 ),
                 Column(
                   children: [
-                    Icon(Icons.landscape),
-                    Text('Scenery')
+                    Icon(Icons.speed),
+                    Text('Speed')
                   ],
                 ),
                 Column(
                   children: [
-                    Icon(Icons.person),
-                    Text('People')
+                    Icon(Icons.flag),
+                    Text('Race')
                   ],
                 ),
               ],
